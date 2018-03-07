@@ -1,0 +1,6 @@
+{   
+    "dbConfig":{
+        "host": "mongodb",
+        "database": "events"
+    }
+}

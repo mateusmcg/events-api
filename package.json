@@ -1,0 +1,30 @@
+{
+  "name": "events-api",
+  "version": "1.0.0",
+  "description": "An API that storage events occurred from websites",
+  "main": "api.js",
+  "scripts": {
+    "test": "\t",
+    "start": "node api.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mateusmcg/events-api.git"
+  },
+  "keywords": [
+    "api",
+    "events",
+    "microservices",
+    "docker"
+  ],
+  "author": "Mateus Cerqueira <mateus.mcg@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mateusmcg/events-api/issues"
+  },
+  "homepage": "https://github.com/mateusmcg/events-api#readme",
+  "dependencies": {
+    "express": "^4.16.2",
+    "mongoose": "^5.0.9"
+  }
+}
