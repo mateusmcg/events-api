@@ -1,7 +1,8 @@
 const express = require('express'),
     models = require('./database/models'),
     db = require('./database/db'),
-    routes = require('./routes/routes');
+    routes = require('./routes/routes'),
+    cors = require('cors');
 
 // Define o ambiente
 let env = process.env.NODE_ENV;
@@ -11,6 +12,8 @@ if (!env) {
 
 // Inicializa o express
 let app = express();
+
+app.use(cors());
 
 // Inicializa o Banco de Dados
 let config = require(`./env/config.${env}.json`);

@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/mateusmcg/events-api#readme",
   "dependencies": {
+    "cors": "^2.8.4",
     "express": "^4.16.2",
     "mongoose": "^5.0.9"
   }
