@@ -17,17 +17,20 @@ router.get('/', function (req, res) {
 });
 
 router.get('/events', function (req, res) {
-    var query = req.query.name ? { $regex: '.*' + req.query.name + '.*' } : {};
+    var query = req.query.name ? { name: { $regex: '.*' + req.query.name + '.*' } } : {};
     Models.Events.aggregate([
         {
-            $match: {
-                name: query
-            }
+            $match: query
         },
         {
             $group: {
                 _id: { name: "$name" },
                 count: { $sum: 1 }
+            }
+        },
+        {
+            $sort: {
+                count: -1
             }
         }
     ], function (err, result) {
