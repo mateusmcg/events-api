@@ -17,8 +17,20 @@ router.get('/', function (req, res) {
 });
 
 router.get('/events', function (req, res) {
-    var query = req.query.name ? { name: { $regex: '.*' + req.query.name + '.*' } } : {};
-    Models.Events.find(query, function (err, events) {
+    var query = req.query.name ? { $regex: '.*' + req.query.name + '.*' } : {};
+    Models.Events.aggregate([
+        {
+            $match: {
+                name: query
+            }
+        },
+        {
+            $group: {
+                _id: { name: "$name" },
+                count: { $sum: 1 }
+            }
+        }
+    ], function (err, result) {
         if (err) {
             console.error(err);
 
@@ -28,9 +40,10 @@ router.get('/events', function (req, res) {
             });
 
             return;
+        } else {
+            console.log(result);
+            res.json(result);
         }
-
-        res.json(events);
     });
 });
 
