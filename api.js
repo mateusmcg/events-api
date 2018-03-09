@@ -2,7 +2,8 @@ const express = require('express'),
     models = require('./database/models'),
     db = require('./database/db'),
     routes = require('./routes/routes'),
-    cors = require('cors');
+    cors = require('cors'),
+    bodyParser = require('body-parser');
 
 // Define o ambiente
 let env = process.env.NODE_ENV;
@@ -14,6 +15,8 @@ if (!env) {
 let app = express();
 
 app.use(cors());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 // Inicializa o Banco de Dados
 let config = require(`./env/config.${env}.json`);
