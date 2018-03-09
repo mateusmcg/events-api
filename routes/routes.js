@@ -17,8 +17,6 @@ router.get('/', function (req, res) {
 });
 
 router.get('/events', function (req, res) {
-    console.log(req);
-
     var query = req.query.name ? { name: { $regex: '.*' + req.query.name + '.*' } } : {};
     Models.Events.find(query, function (err, events) {
         if (err) {
@@ -37,7 +35,6 @@ router.get('/events', function (req, res) {
 });
 
 router.post('/events', function (req, res) {
-    console.log(req);
     var body = req.body;
     console.log(body);
 
