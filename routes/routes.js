@@ -17,7 +17,7 @@ router.get('/', function (req, res) {
 });
 
 router.get('/events', function (req, res) {
-    var query = req.query.name ? { name: { $regex: '.*' + req.query.name + '.*' } } : {};
+    var query = req.query.name ? { name: { $regex: '.*' + req.query.name + '.*', $options:'i' } } : {};
     Models.Events.aggregate([
         {
             $match: query
